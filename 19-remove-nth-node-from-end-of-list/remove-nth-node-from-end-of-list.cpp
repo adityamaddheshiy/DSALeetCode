@@ -16,28 +16,30 @@ public:
         }
         ListNode* slow = head;
         ListNode* fast = head;
-
-        for(int i=0; i<n; i++){
+        // treves not nth steps 
+        for (int i = 0; i < n; i++) {
             fast = fast->next;
         }
+       
 
-        if(fast == NULL){
+        // fast is null then remove head ;
+        if (fast == NULL) {
             ListNode* temp = head;
-            head = head -> next;
+            head = head->next;
             delete temp;
             return head;
         }
-
-        // ListNode* prev = NULL;
-        
+        // move bhot pointer last until the fast not the last
         while (fast->next != NULL) {
             slow = slow->next;
             fast = fast->next;
         }
+
+        // delete nth node from last
+
         ListNode* temp = slow->next;
         slow->next = slow->next->next;
         delete temp;
-
 
         return head;
     }
