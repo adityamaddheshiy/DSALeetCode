@@ -17,35 +17,27 @@ public:
         if(root == NULL){
             return 0;
         }
-
-        int leftheight =  Height(root-> left);
-        int rightheight = Height(root ->right);
-        int ans = 1 + max (leftheight ,rightheight);
-
-        return ans;
+        int leftH = Height(root->left);
+        int rightH = Height(root->right);
+        return max(leftH, rightH)+1;
     }
     bool isBalanced(TreeNode* root) {
         if(root == NULL){
             return true;
         }
-
-        // 1 Case 
-        int leftHeight = Height(root ->left);
-        int rightHeight = Height(root ->right);
-
+        int leftHeight = Height(root->left);
+        int rightHeight = Height(root->right);
         int diff = abs(leftHeight - rightHeight);
-
-        bool ans1 = (diff<=1);
-
+        bool ans1 =(diff <=1);
+        
         // recursion 
-        bool  leftAns = isBalanced(root->left);
-        bool  rightAns = isBalanced(root->right);
+        bool leftAns = isBalanced(root->left);
+        bool rightAns = isBalanced(root->right);
 
         if(ans1 && leftAns && rightAns){
             return true;
-        }else {
-            return false; 
+        }else{
+            return false;
         }
-        
     }
 };
